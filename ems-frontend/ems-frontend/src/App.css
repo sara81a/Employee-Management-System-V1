@@ -1,0 +1,29 @@
+.footer {
+  position: absolute; /* Keeps the footer at the bottom of the viewport */
+  bottom: 0; /* Aligns it to the bottom */
+  left: 0; /* Aligns it to the left */
+  width: 100%; /* Makes it full width */
+  background-color: #343a40; /* Dark background (matching Bootstrap dark theme) */
+  color: white; /* Text color */
+  text-align: center; /* Center align the text */
+  padding: 10px 0; /* Vertical padding */
+  z-index: 1000; /* Ensures it stays above other content */
+}
+
+.header {
+  background-color: #343a40; /* Dark background (matching Bootstrap dark theme) */
+  color: white; /* Text color */
+  padding: 15px 20px; /* Padding for spacing */
+  position: fixed; /* Keeps the header fixed at the top */
+  top: 0; /* Aligns it to the top */
+  left: 0; /* Aligns it to the left */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Stays above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+
+.custom-border {
+  border: 5px solid gray; /* Change the size and color as needed */
+  width: 95%; /* 80% of the parent container */
+  height: 500px; 
+}

@@ -1,0 +1,68 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: ems
+      MYSQL_ROOT_PASSWORD: sara1234 # Root password for MySQL
+    ports: #forwards the traffic 3307 to 3306 mysql container
+      - '3307:3306'   # Host port(my computer connect to localhost:3307): Container port(mysql)
+    volumes:  #volumes for container
+      - mysql-data:/var/lib/mysql    #the name of volume is mysql-data , mysql store the info in path /var/lib/mysql
+    networks:   #networks that container will connect to
+      - springboot-mysql #name of network springboot-mysql to communicate
+
+
+  backend:
+    build:
+      context: ./ems-backend
+    container_name: ems-backend
+    ports:
+      - '8080:8080'  # Host port : Container port
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ems
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: sara1234
+      MYSQL_ROOT_PASSWORD: sara1234
+    depends_on:
+      - mysql
+    volumes:
+      - app-data:/app/uploads
+    networks:
+      - springboot-mysql
+
+
+
+  frontend:
+    build:
+      context: ./ems-frontend/ems-frontend
+      dockerfile: Dockerfile
+    container_name: ems-frontend
+    ports:
+      - '5173:5173'  # Host port : Container port
+    #environment:
+      #REACT_APP_API_URL: http://localhost:8080/api/employees # backend rest api
+
+    # SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ems
+    # SPRING_DATASOURCE_USERNAME: root
+    # SPRING_DATASOURCE_PASSWORD: sara1234
+   #  MYSQL_ROOT_PASSWORD: sara1234
+    depends_on:
+      - backend
+    volumes:
+      - app-data:/app/uploads
+    networks:
+      - springboot-mysql
+
+
+
+
+
+volumes:  #Global Volumes
+  mysql-data: {}
+  app-data: {}
+
+
+networks:
+  springboot-mysql:
+    driver: bridge
