@@ -43,10 +43,7 @@ services:
     #environment:
       #REACT_APP_API_URL: http://localhost:8080/api/employees # backend rest api
 
-    # SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ems
-    # SPRING_DATASOURCE_USERNAME: root
-    # SPRING_DATASOURCE_PASSWORD: sara1234
-   #  MYSQL_ROOT_PASSWORD: sara1234
+
     depends_on:
       - backend
     volumes:
