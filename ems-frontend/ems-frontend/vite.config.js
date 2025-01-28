@@ -6,8 +6,8 @@ export default defineConfig({
 base:"/" ,
   plugins: [react()],
  preview:{
- port: 5173,
- strictPort: true,
+ port: 5173,  //
+ strictPort: true, //
 
  },
   server: {
@@ -15,5 +15,6 @@ base:"/" ,
         strictPort: true, // Ensure the port doesn't change
         host: true,
         origin: "http://0.0.0:5173",
+
   },
 });
