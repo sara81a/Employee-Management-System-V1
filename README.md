@@ -1,7 +1,9 @@
 # Employee-Management-System-V1
 
 
-This is a web application  with **Spring Boot** backend and a **React (Vite)** frontend, built using **MySQL** as the database. The application provides functionality to manage employee records.
+This is a web application  with **Spring Boot** backend that interacts with MySQL DB .It exposes REST API that the frontend consumes to update information .
+The frontend is **React (Vite)** that communicates with the backend using Axios to send API requests.
+The application provides functionality to manage employee records.
 
 ---
 
