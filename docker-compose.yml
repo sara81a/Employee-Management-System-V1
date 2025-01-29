@@ -42,8 +42,6 @@ services:
       - '5173:5173'  # Host port : Container port
     #environment:
       #REACT_APP_API_URL: http://localhost:8080/api/employees # backend rest api
-
-
     depends_on:
       - backend
     volumes:
@@ -62,4 +60,4 @@ volumes:  #Global Volumes
 
 networks:
   springboot-mysql:
-    driver: bridge
+    driver: bridge #allow container to container communicate , isolation fron other docker networks

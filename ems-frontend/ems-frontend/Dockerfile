@@ -1,27 +1,22 @@
 # Use the latest LTS version of Node.js
-FROM node:18-alpine AS build
+FROM node:22-alpine AS build
 
-# Set the working directory inside the container
+#Set the working directory inside the container
+#run , cmd ,copy >> will be executed inside the /app
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json to /app
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies from .json
 RUN npm install
 
-# Copy the rest of your application files
-COPY ../.. .
+# Copy the entire files in /app
+COPY . .
 
-# Stage 2: Serve React app with Nginx
-#FROM nginx:alpine
-#COPY --from=build /app/build /usr/share/nginx/html
-# Expose the port your app runs on
 EXPOSE 5173
 
-# Define the command to run your app
+# Define the command to run your app in development mode
+# npm run dev
 CMD ["npm","run","dev"]
-#CMD ["nginx", "-g", "daemon off;"]
 
-# Start the Vite development server
-#CMD ["npm", "run", "dev", "--", "--host"]
