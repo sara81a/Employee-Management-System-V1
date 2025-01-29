@@ -16,7 +16,7 @@ COPY . .
 
 EXPOSE 5173
 
-# Define the command to run your app in development mode
+# Define the command to run the app in development mode
 # npm run dev
 CMD ["npm","run","dev"]
 
